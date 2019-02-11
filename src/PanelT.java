@@ -1,18 +1,25 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
 import static javax.swing.GroupLayout.Alignment.*;
 
 import javax.swing.*;
 
-public class PanelT extends JFrame {
-//	private Transmisor transmisor;
+public class PanelT extends JPanel {
+	
+	private Transmisor transmisor;
 	private JLabel lblCaracteres,
 				   lblDestinatario,
 				   lblInformacion,
 				   lblIniciar,
 				   lblRepetir,
-				   lblSiguiente;
+				   lblSiguiente,
+				   lblT,
+				   lbln,
+				   lbl25;
+		
 	private JTextField tfCaracteres,
 					   tfDestinatario;
 	private JButton btnIniciar,
@@ -32,94 +39,78 @@ public class PanelT extends JFrame {
 		this.btnIniciar = new JButton("Iniciar");
 		this.btnRepetir = new JButton("Repetir");
 		this.btnSiguiente = new JButton("Siguiente");
+		this.lblT = new JLabel("Transmitiendo a: ");
+		int n= 0; 
+		this.lbln = new JLabel("Caracter "+ n + " de 25");
+		
+		
+		this.setPreferredSize(new Dimension(1280, 720));
+		
+		JPanel main = new JPanel();
+        main.setPreferredSize(new Dimension(1250, 703));
+        this.setLayout(new BorderLayout());		
+		
+		JPanel lbl = new JPanel();
+		lbl.setLayout(new FlowLayout(FlowLayout.CENTER));
+		lbl.setBorder(new LineBorder(Color.CYAN));
+		lbl.add(lblCaracteres);
+		lbl.add(tfCaracteres);
+		lbl.add(lblDestinatario);
+		lbl.add(tfDestinatario);
+		
+		JPanel btn = new JPanel();
+		btn.setLayout(new FlowLayout(FlowLayout.CENTER));
+		btn.setBorder(new LineBorder(Color.CYAN));
+		btn.add(lblIniciar);
+		btn.add(btnIniciar);
+		btn.add(lblRepetir);
+		btn.add(btnRepetir);
+		btn.add(lblSiguiente);
+		btn.add(btnSiguiente);
+		
+		btnIniciar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Iniciar");
+            }
+        });
+		
+		btnRepetir.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Repetir");
+            }
+        });
+		
+		btnSiguiente.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Iniciar");
+            }
+        });
 		
 		this.setBackground(Color.black);
 		this.setPreferredSize(new Dimension(1280, 720));
 		
-		GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setAutoCreateGaps(true);
-        layout.setAutoCreateContainerGaps(true);
+		JPanel p4 = new JPanel();
+		p4.setLayout(new FlowLayout(FlowLayout.CENTER));
+		p4.setBorder(new LineBorder(Color.CYAN));
+		p4.add(lblT);
+		p4.add(lbln);
+		
+		main.add(lbl, BorderLayout.NORTH);
+		main.add(btn, BorderLayout.CENTER);
+		main.add(p4, BorderLayout.SOUTH);
+		this.add(main);
+	//	this.add(p4);
+	//	main.add
+		
         
-        layout.setVerticalGroup(layout.createSequentialGroup()
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(lblCaracteres)
-        				.addComponent(tfCaracteres))
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(lblDestinatario)
-        				.addComponent(tfDestinatario))
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(btnIniciar)
-        				.addComponent(btnRepetir)
-        				.addComponent(btnSiguiente))
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(btnIniciar)
-        				.addComponent(btnRepetir)
-        				.addComponent(btnSiguiente))
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(lblIniciar)
-        				.addComponent(lblRepetir)
-        				.addComponent(lblSiguiente))
-        		.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-        				.addComponent(lblCaracteres)
-        				.addComponent(lblDestinatario)
-        				.addComponent(lblInformacion))
-        );
-     //   layout.linkSize(SwingConstants.HORIZONTAL, findButton, cancelButton);
-        
-        layout.setHorizontalGroup(layout.createSequentialGroup()
-        		.addGroup(layout.createParallelGroup(LEADING)
-        				.addComponent(lblCaracteres)
-        				.addComponent(lblDestinatario))
-        		.addGroup(layout.createParallelGroup()
-        				 .addGroup(layout.createParallelGroup(LEADING)
-        						.addComponent(tfCaracteres)
-        	        			.addComponent(tfDestinatario))
-        				 .addGroup(layout.createParallelGroup(LEADING)
-        						 .addComponent(btnIniciar)
-        	        			 .addComponent(btnRepetir)
-        	        			 .addComponent(btnSiguiente))
-        				 .addGroup(layout.createParallelGroup(LEADING)
-        						 .addComponent(lblIniciar)
-        	        			 .addComponent(lblRepetir)
-        	        			 .addComponent(lblSiguiente))
-        				 .addGroup(layout.createParallelGroup(LEADING)
-        						 .addComponent(lblIniciar)
-        	        			 .addComponent(lblRepetir)
-        	        			 .addComponent(lblSiguiente)))
-         );
-	/*	
-		this.add(this.lblCaracteres);
-		this.add(this.lblDestinatario);
-		this.add(this.lblInformacion);
-		this.add(this.tfCaracteres);
-		this.add(this.tfDestinatarios);
-		this.add(this.btnIniciar);
-		this.add(this.btnRepetir);
-		this.add(this.btnSiguiente);
-	*/
-        setTitle("Transmisor");
-        pack();
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 	
-//	public void setTransmisor(Transmisor transmisor) {
-//	this.transmisor = transmisor;
-//	}
-	public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(
-                                  "javax.swing.plaf.metal.MetalLookAndFeel");
-                                //  "com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-                                //UIManager.getCrossPlatformLookAndFeelClassName());
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                new PanelT().setVisible(true);
-            }
-        });
-    }
+	public void setTransmisor(Transmisor transmisor) {
+	this.transmisor = transmisor;
+	}
+	
 			
 }
