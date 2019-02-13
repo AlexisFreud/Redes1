@@ -69,7 +69,14 @@ public class Speaker {
 										   {19,50,2},  //Destinatario 3
 										   {25,50,2}}; //Destinatario 4
 	
+	public static void alarma() {
+		
+	}
+	
 	public static void reproducirSonido(int[] sonido, int destinatario, boolean lento) {
+		for(int s: sonido) {
+			System.out.print(s + " ");
+		}
 		boolean fin = false;
 		String posicion = "";
 		for(int s: sonido) {
@@ -98,9 +105,9 @@ public class Speaker {
 				 * Borrar
 				 */
 				if(lento) {
-				reproducirSonido(s, 300);
-				}else {
 				reproducirSonido(s, 150);
+				}else {
+				reproducirSonido(s, 75);
 				}
 			}
 			Timer.esperar(true);
@@ -114,6 +121,9 @@ public class Speaker {
 	}
 	
 	private static void reproducirSonido(int destinatario) {
+		if(destinatario > 3) {
+			destinatario-=49;
+		}
 		configurar(Destinatarios[destinatario][0],
 				   Destinatarios[destinatario][1],
 				   Destinatarios[destinatario][2], 500);
