@@ -28,14 +28,17 @@ public class PanelT extends JPanel {
 	
 	public PanelT() {
 		super();
+		this.setFocusable(true);
 		this.lblCaracteres = new JLabel("Caracteres");
 		this.lblDestinatario = new JLabel("Destinatario");
 		this.lblInformacion = new JLabel("Informacion");
 		this.lblIniciar = new JLabel("Iniciar");
 		this.lblRepetir = new JLabel("Repetir");
 		this.lblSiguiente = new JLabel("Siguiente");
-		this.tfCaracteres = new JTextField("Caracteres");
-		this.tfDestinatario = new JTextField("Destinatario");
+		this.tfCaracteres = new JTextField("");
+		this.tfDestinatario = new JTextField("");
+		this.tfCaracteres.setPreferredSize(new Dimension(400, 25));
+		this.tfDestinatario.setPreferredSize(new Dimension(400,25));
 		this.btnIniciar = new JButton("Iniciar");
 		this.btnRepetir = new JButton("Repetir");
 		this.btnSiguiente = new JButton("Siguiente");
@@ -71,21 +74,24 @@ public class PanelT extends JPanel {
 		btnIniciar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Iniciar");
+                //System.out.println("Iniciar");
+            	//System.out.println(tfCaracteres.getText());
+            	//System.out.println(tfDestinatario.getText());
+            	transmisor.setMessage(tfCaracteres.getText(), tfDestinatario.getText());
             }
         });
 		
 		btnRepetir.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Repetir");
+                transmisor.transmitir(false);
             }
         });
 		
 		btnSiguiente.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Iniciar");
+            	transmisor.transmitir(true);
             }
         });
 		
@@ -104,13 +110,30 @@ public class PanelT extends JPanel {
 		this.add(main);
 	//	this.add(p4);
 	//	main.add
-		
+		this.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent k) {
+				
+			}
+			
+		});
         
 	}
 	
 	public void setTransmisor(Transmisor transmisor) {
-	this.transmisor = transmisor;
+		this.transmisor = transmisor;
 	}
-	
-			
 }
