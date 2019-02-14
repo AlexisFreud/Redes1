@@ -21,7 +21,12 @@ public class Receptor {
 	}
 	
 	public String siguienteCaracter() {
-		char caracter = Traductor.traducir(this.caracterBinario);
+		//try {
+			char caracter = Traductor.traducir(this.caracterBinario);
+			
+		//} catch(IndexOutOfBoundsException e) {
+			//this.panel.notFound();
+		//}
 		this.addCaracter(caracter);
 		this.vaciarArray();
 		return String.valueOf(caracter);
@@ -49,7 +54,7 @@ public class Receptor {
 	}
 	
 	public void repetirPorfavor() {
-		//Speaker.algo
+		Speaker.alarma();
 		System.out.println("REPITE");
 		this.vaciarArray();
 	}
