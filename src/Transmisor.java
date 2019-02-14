@@ -26,9 +26,16 @@ public class Transmisor {
     
     public void setMessage(String msg, String dest){
         this.mensaje = new char[msg.length()][msg.length()];
+        char numerico = '0';
         for (int i = 0; i < this.mensaje.length; i++) {
             this.mensaje[0][i] = msg.charAt(i);
-            this.mensaje[1][i] = dest.charAt(i);
+            
+            if(dest.charAt(i)=='a'||dest.charAt(i)=='A') numerico = '1';
+            if(dest.charAt(i)=='b'||dest.charAt(i)=='B') numerico = '2';
+            if(dest.charAt(i)=='c'||dest.charAt(i)=='C') numerico = '3';
+            if(dest.charAt(i)=='d'||dest.charAt(i)=='D') numerico = '4';
+            
+            this.mensaje[1][i] = numerico;
         }
         this.transmitir(true);
     }

@@ -5,17 +5,22 @@ public class Main{
 
     public static void main(String[] args) {
         
-        //Transmisor transmisor = new Transmisor();
+        /*
+        Transmisor transmisor = new Transmisor();
+        PanelT panelT = new PanelT();
+        Ventana ventanaT = new Ventana("Transmisor",panelT);
+        transmisor.setPanel(panelT);
+        panelT.setTransmisor(transmisor);
+        */
+        
+    	
         Receptor receptor = new Receptor();
-        //PanelT panelT = new PanelT();
-        PanelR panelR = new PanelR("A");
-        
-        //Ventana ventanaT = new Ventana("Transmisor",panelT);
-        Ventana ventanaR = new Ventana(panelR);
-        
-        //transmisor.setPanel(panelT);
+        PanelR panelR = new PanelR("B");
+        Ventana ventanaR = new Ventana("Receptor",panelR);
         receptor.setPanel(panelR);
         panelR.setReceptor(receptor);
+        
+        
         
     }
 }
