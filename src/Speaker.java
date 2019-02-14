@@ -70,6 +70,9 @@ public class Speaker {
 										   {25,50,2}}; //Destinatario 4
 	
 	public static void alarma() {
+		configurar(Sonidos[0][0],
+				   Sonidos[0][1],
+				   Sonidos[0][2], 200);
 		
 	}
 	
