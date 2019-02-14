@@ -6,6 +6,7 @@ public class Receptor {
 	private int posicionBinario, posicionRecibidos;
 	
 	public Receptor() {
+		this.caracterBinario = new int[5];
 		this.caracteresRecibidos = new char[30];
 		this.posicionBinario = 0;
 		this.posicionRecibidos = 0;
@@ -19,9 +20,11 @@ public class Receptor {
 		
 	}
 	
-	public void siguienteCaracter() {
-		this.addCaracter(Traductor.traducir(this.caracterBinario));
+	public String siguienteCaracter() {
+		char caracter = Traductor.traducir(this.caracterBinario);
+		this.addCaracter(caracter);
 		this.vaciarArray();
+		return String.valueOf(caracter);
 	}
 	
 	public void addCaracter(char ch) {
@@ -37,4 +40,18 @@ public class Receptor {
 	public char[] getCaracteresRecibidos() {
 		return this.caracteresRecibidos;
 	}
+	
+	public void addCaracterBinario(int n) {
+		if(posicionBinario<caracterBinario.length-1) {
+			this.caracterBinario[++posicionBinario] = n;
+		}
+		
+	}
+	
+	public void repetirPorfavor() {
+		//Speaker.algo
+		System.out.println("REPITE");
+		this.vaciarArray();
+	}
+	
 }
